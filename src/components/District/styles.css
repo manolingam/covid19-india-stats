@@ -1,6 +1,7 @@
 .district-stats {
 	display: flex;
 	align-items: center;
+	margin: 1em;
 }
 
 @media only screen and (max-width: 900px) {
