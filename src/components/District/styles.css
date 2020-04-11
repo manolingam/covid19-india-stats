@@ -1,0 +1,10 @@
+.district-stats {
+	display: flex;
+	align-items: center;
+}
+
+@media only screen and (max-width: 900px) {
+	.district-stats {
+		margin: 1rem;
+	}
+}

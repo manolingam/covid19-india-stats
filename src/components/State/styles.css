@@ -1,0 +1,10 @@
+.regional-stats {
+	display: flex;
+	align-items: center;
+}
+
+@media only screen and (max-width: 900px) {
+	.regional-stats {
+		margin: 1rem;
+	}
+}
