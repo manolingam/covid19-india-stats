@@ -1,11 +1,12 @@
 .regional-stats {
+	height: 100%;
+	width: 70%;
 	display: flex;
 	align-items: center;
-	margin: 1em;
+	justify-content: center;
 }
 
-@media only screen and (max-width: 900px) {
-	.regional-stats {
-		margin: 1rem;
-	}
-}
+/* #stateBarChart {
+	height: auto;
+	width: 70%;
+} */

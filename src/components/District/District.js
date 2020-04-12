@@ -1,90 +1,47 @@
 import React from 'react';
 
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import Chart from 'chart.js';
 
 import './styles.css';
 
-const StyledTableCell = withStyles((theme) => ({
-	head: {
-		backgroundColor: theme.palette.common.black,
-		color: theme.palette.common.white,
-	},
-	body: {
-		fontSize: 14,
-	},
-}))(TableCell);
+let labels = [];
+let cases = [];
+class District extends React.Component {
+	componentDidMount() {
+		let districts = this.props.stats.districtData;
 
-const StyledTableRow = withStyles((theme) => ({
-	root: {
-		'&:nth-of-type(odd)': {
-			backgroundColor: theme.palette.background.default,
-		},
-	},
-}))(TableRow);
+		for (var key in districts) {
+			labels.push(key);
+			cases.push(districts[key].confirmed);
+		}
 
-const useStyles = makeStyles({
-	table: {
-		minWidth: 100,
-	},
-	root: {
-		width: '100%',
-	},
-	container: {
-		maxHeight: 440,
-	},
-});
+		var ctx = document.getElementById('districtBarChart');
+		var myBarChart = new Chart(ctx, {
+			type: 'horizontalBar',
+			data: {
+				labels: labels,
+				datasets: [
+					{
+						label: 'Confirmed Cases',
+						data: cases,
+						backgroundColor: 'rgba(255, 99, 132, 0.2)',
+						borderColor: 'rgba(255, 99, 132, 1)',
+						borderWidth: 1,
 
-const District = (props) => {
-	const classes = useStyles();
-
-	let districts = props.stats.districtData;
-
-	let districtData = [];
-
-	for (var key in districts) {
-		districtData.push({
-			district: key,
-			confirmed: districts[key].confirmed,
+						minBarLength: 5,
+					},
+				],
+			},
 		});
 	}
 
-	return (
-		<div className='district-stats'>
-			<Paper className={classes.root}>
-				<TableContainer className={classes.container}>
-					<Table stickyHeader aria-label='sticky table'>
-						<TableHead>
-							<TableRow>
-								<StyledTableCell>District</StyledTableCell>
-								<StyledTableCell align='right'>
-									Confirmed
-								</StyledTableCell>
-							</TableRow>
-						</TableHead>
-						<TableBody>
-							{districtData.map((item, index) => (
-								<StyledTableRow key={index}>
-									<StyledTableCell component='th' scope='row'>
-										{item.district}
-									</StyledTableCell>
-									<StyledTableCell align='right'>
-										{item.confirmed}
-									</StyledTableCell>
-								</StyledTableRow>
-							))}
-						</TableBody>
-					</Table>
-				</TableContainer>
-			</Paper>
-		</div>
-	);
-};
+	render() {
+		return (
+			<div className='district-stats'>
+				<canvas id='districtBarChart'></canvas>
+			</div>
+		);
+	}
+}
 
 export default District;
