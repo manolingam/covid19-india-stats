@@ -9,7 +9,6 @@ import Nav from './components/Nav/Nav';
 import logo from './assets/logo.png';
 
 import './App.css';
-import './ribbon.css';
 
 let history;
 let historyLabels = [];
@@ -21,6 +20,9 @@ let stateCases = [];
 let districtLabels = [];
 let districtCases = [];
 
+Chart.defaults.global.defaultFontColor = 'black';
+Chart.defaults.global.defaultFontFamily = "'Share Tech Mono', monospace";
+Chart.defaults.global.defaultFontSize = 10;
 class App extends React.Component {
 	constructor() {
 		super();
@@ -34,6 +36,8 @@ class App extends React.Component {
 			historyLabels.push(stat.day);
 			historyCases.push(stat.summary.total);
 		});
+
+		let stateStatsObject = this.state.rawStats.statewise.shift();
 
 		this.state.rawStats.statewise.map((stat) => {
 			stateLabels.push(stat.state);
@@ -56,8 +60,8 @@ class App extends React.Component {
 					{
 						label: 'Confirmed Cases',
 						data: districtCases,
-						backgroundColor: 'rgba(255, 99, 132, 0.2)',
-						borderColor: 'rgba(255, 99, 132, 1)',
+						backgroundColor: '#d8345f',
+						borderColor: '#d8345f',
 						borderWidth: 1,
 
 						minBarLength: 5,
@@ -145,8 +149,8 @@ class App extends React.Component {
 					{
 						label: 'Confirmed Cases',
 						data: historyCases,
-						backgroundColor: 'rgba(255, 99, 132, 0.2)',
-						borderColor: 'rgba(255, 99, 132, 1)',
+						backgroundColor: 'white',
+						borderColor: '#d8345f',
 						borderWidth: 1,
 					},
 				],
@@ -235,20 +239,18 @@ class App extends React.Component {
 			<div className='app'>
 				<div className='container'>
 					<section id='home'>
-						<div className='corner-ribbon top-left sticky red shadow'>
-							<a
-								className='white'
-								href='https://manolingam.github.io/portfolio'
-								target='_blank'
-								rel='noopener noreferrer'
-							>
-								Design by Mano
-							</a>
-						</div>
+						<a
+							id='developer'
+							href='https://manolingam.github.io/portfolio'
+							target='_blank'
+							rel='noopener noreferrer'
+						>
+							Design by Mano
+						</a>
 
 						<p id='data-source'>* data from Covid19India</p>
 						<p id='last-updated'>
-							* {this.state.stateStats.lastRefreshed}
+							* {this.state.rawStats.statewise[0].lastupdatedtime}
 						</p>
 
 						<div className='nav-container'>

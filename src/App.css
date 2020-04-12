@@ -106,6 +106,20 @@ a:hover {
 	font-family: 'Share Tech Mono', monospace;
 }
 
+#developer {
+	position: absolute;
+	top: 0.5rem;
+	left: 0.5rem;
+	font-size: 1rem;
+	text-decoration: none;
+	padding: 0.5em;
+	background-color: white;
+	color: black;
+	border: none;
+	font-style: italic;
+	font-family: 'Share Tech Mono', monospace;
+}
+
 @media only screen and (max-width: 900px) {
 	.container {
 		display: block;
@@ -124,6 +138,9 @@ a:hover {
 	#last-updated {
 		right: 1rem;
 		font-size: 0.4em;
+	}
+	#developer {
+		font-size: 0.5rem;
 	}
 }
 
