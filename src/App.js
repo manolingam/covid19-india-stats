@@ -2,10 +2,13 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import Charts from './pages/Charts/Charts';
+import Pie from './components/Pie/Pie';
+import Nav from './components/Nav/Nav';
 
 import logo from './assets/logo.png';
 
 import './App.css';
+import './ribbon.css';
 
 class App extends React.Component {
 	constructor() {
@@ -46,6 +49,26 @@ class App extends React.Component {
 			stateStats: stateStats,
 			districtStats: districtStats,
 			historyStats: historyStats,
+			totalPrevious:
+				historyStats.data[historyStats.data.length - 2].summary.total,
+			totalCurrent: stateStats.data.summary.total,
+			confirmedIndianPrevious:
+				historyStats.data[historyStats.data.length - 2].summary
+					.confirmedCasesIndian,
+			confirmedIndianCurrent:
+				stateStats.data.summary.confirmedCasesIndian,
+			confirmedForeignPrevious:
+				historyStats.data[historyStats.data.length - 2].summary
+					.confirmedCasesForeign,
+			confirmedForeignCurrent:
+				stateStats.data.summary.confirmedCasesForeign,
+			dischargedPrevious:
+				historyStats.data[historyStats.data.length - 2].summary
+					.discharged,
+			dischargedCurrent: stateStats.data.summary.discharged,
+			deathPrevious:
+				historyStats.data[historyStats.data.length - 2].summary.deaths,
+			deathCurrent: stateStats.data.summary.deaths,
 		});
 	}
 
@@ -53,6 +76,11 @@ class App extends React.Component {
 		return this.state.districtStats ? (
 			<div className='app'>
 				<div className='container'>
+					<div className='corner-ribbon top-left sticky red shadow'>
+						<a className='white' href='https://ipfs.io/'>
+							Design by Mano
+						</a>
+					</div>
 					<Router>
 						<Route exact path='/'>
 							<div className='nav-container'>
@@ -61,44 +89,24 @@ class App extends React.Component {
 									height='100px'
 									width='auto'
 									alt='logo'
+									id='logo'
 								></img>
-								<nav className='nav'>
-									<p id='cases'>
-										Cases:{' '}
-										{
-											this.state.stateStats.data.summary
-												.total
-										}
-									</p>
-									<p id='indian'>
-										Indian Cases:{' '}
-										{
-											this.state.stateStats.data.summary
-												.confirmedCasesIndian
-										}
-									</p>
-									<p id='foreign'>
-										Foreign Cases:{' '}
-										{
-											this.state.stateStats.data.summary
-												.confirmedCasesForeign
-										}
-									</p>
-									<p id='recovered'>
-										Recovered:{' '}
-										{
-											this.state.stateStats.data.summary
-												.discharged
-										}
-									</p>
-									<p>
-										Deaths:{' '}
-										{
-											this.state.stateStats.data.summary
-												.deaths
-										}
-									</p>
-								</nav>
+								<p id='app-title'>Covid-19 India Stats</p>
+								<Nav stats={this.state} />
+								<Pie
+									total={
+										this.state.stateStats.data.summary.total
+									}
+									discharged={
+										this.state.stateStats.data.summary
+											.discharged
+									}
+									deaths={
+										this.state.stateStats.data.summary
+											.deaths
+									}
+								/>
+								<Link to='/charts'>View more</Link>
 							</div>
 						</Route>
 						<Route exact path='/charts'>
@@ -109,11 +117,6 @@ class App extends React.Component {
 									this.state.districtStats['Tamil Nadu']
 								}
 							/>
-							<section>
-								<div className='chart-container'>
-									<canvas id='myChart'></canvas>
-								</div>
-							</section>
 						</Route>
 					</Router>
 				</div>

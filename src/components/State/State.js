@@ -10,13 +10,13 @@ class State extends React.Component {
 		this.state = {};
 	}
 
-	async componentDidMount() {
-		await this.props.stats.map((stat) => {
+	chart = () => {
+		this.props.stats.map((stat) => {
 			labels.push(stat.loc);
 			cases.push(stat.totalConfirmed);
 		});
-		var ctx = document.getElementById('stateBarChart');
-		var myBarChart = new Chart(ctx, {
+		var state_ctx = document.getElementById('stateBarChart');
+		new Chart(state_ctx, {
 			type: 'horizontalBar',
 			data: {
 				labels: labels,
@@ -57,7 +57,7 @@ class State extends React.Component {
 				},
 			},
 		});
-	}
+	};
 
 	render() {
 		return <canvas id='stateBarChart'></canvas>;

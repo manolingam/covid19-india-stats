@@ -4,18 +4,20 @@ import Chart from 'chart.js';
 
 let labels = [];
 let cases = [];
+let history;
+let country_ctx;
 
 class Country extends React.Component {
 	componentDidMount() {
-		let history = this.props.stats;
+		history = this.props.stats;
 
 		history.data.map((stat) => {
 			labels.push(stat.day);
 			cases.push(stat.summary.total);
 		});
 
-		var ctx = document.getElementById('countryChart');
-		var myLineChart = new Chart(ctx, {
+		country_ctx = document.getElementById('countryChart');
+		new Chart(country_ctx, {
 			type: 'line',
 			data: {
 				labels: labels,

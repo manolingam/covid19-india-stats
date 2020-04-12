@@ -13,8 +13,8 @@ class District extends React.Component {
 			cases.push(districts[key].confirmed);
 		}
 
-		var ctx = document.getElementById('districtBarChart');
-		var myBarChart = new Chart(ctx, {
+		var district_ctx = document.getElementById('districtBarChart');
+		new Chart(district_ctx, {
 			type: 'horizontalBar',
 			data: {
 				labels: labels,

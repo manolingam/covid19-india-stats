@@ -1,0 +1,35 @@
+.corner-ribbon {
+	width: 200px;
+
+	position: absolute;
+	top: 25px;
+	left: -50px;
+	text-align: center;
+	line-height: 30px;
+	letter-spacing: 1px;
+
+	transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+}
+
+.corner-ribbon.sticky {
+	position: fixed;
+}
+
+.corner-ribbon.shadow {
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.corner-ribbon.top-left {
+	top: 30px;
+	left: -50px;
+	transform: rotate(-45deg);
+	background-color: white;
+	-webkit-transform: rotate(-45deg);
+}
+
+.corner-ribbon a {
+	background-color: white;
+	color: black;
+	border: none;
+}
