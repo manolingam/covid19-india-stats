@@ -39,7 +39,7 @@ const Nav = (props) => {
 				{totalCurrent > totalPrevious ? (
 					<div className='increase-stat animated flash'>
 						<p>{totalCurrent - totalPrevious}</p>
-						<img src={arrow} alt='arrow'></img>
+						<img className='arrow' src={arrow} alt='arrow'></img>
 					</div>
 				) : (
 					<div></div>
@@ -54,7 +54,7 @@ const Nav = (props) => {
 						<p>
 							{confirmedIndianCurrent - confirmedIndianPrevious}
 						</p>
-						<img src={arrow} alt='arrow'></img>
+						<img className='arrow' src={arrow} alt='arrow'></img>
 					</div>
 				) : (
 					<div></div>
@@ -69,7 +69,7 @@ const Nav = (props) => {
 						<p>
 							{confirmedForeignCurrent - confirmedForeignPrevious}
 						</p>
-						<img src={arrow} alt='arrow'></img>
+						<img className='arrow' src={arrow} alt='arrow'></img>
 					</div>
 				) : (
 					<div></div>
@@ -82,7 +82,7 @@ const Nav = (props) => {
 				{dischargedCurrent > dischargedPrevious ? (
 					<div className='increase-stat animated flash'>
 						<p>{dischargedCurrent - dischargedPrevious}</p>
-						<img src={arrow} alt='arrow'></img>
+						<img className='arrow' src={arrow} alt='arrow'></img>
 					</div>
 				) : (
 					<div></div>
@@ -93,7 +93,7 @@ const Nav = (props) => {
 				{deathCurrent > deathPrevious ? (
 					<div className='increase-stat animated flash'>
 						<p>{deathCurrent - deathPrevious}</p>
-						<img src={arrow} alt='arrow'></img>
+						<img className='arrow' src={arrow} alt='arrow'></img>
 					</div>
 				) : (
 					<div></div>

@@ -97,7 +97,7 @@ a:hover {
 	.nav p {
 		font-size: 0.5em;
 	}
-	.nav-container img {
+	#logo {
 		height: 50px;
 		width: auto;
 	}
