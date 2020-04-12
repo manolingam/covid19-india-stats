@@ -9,14 +9,14 @@
 .overall-count {
 	padding: 0.5em;
 	border-radius: 1em;
-	background-color: #fe346e;
+	background-color: #323232;
 	color: white;
 	margin: 0.3em;
 	font-size: small;
 }
 
 #cases {
-	background-color: #323232;
+	background-color: #fe346e;
 }
 
 #recovered {
