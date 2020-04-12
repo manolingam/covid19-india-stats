@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/covid19-india-stats/static/css/main.0250a2a1.chunk.css",
-    "main.js": "/covid19-india-stats/static/js/main.67f3d648.chunk.js",
-    "main.js.map": "/covid19-india-stats/static/js/main.67f3d648.chunk.js.map",
+    "main.css": "/covid19-india-stats/static/css/main.9205ce66.chunk.css",
+    "main.js": "/covid19-india-stats/static/js/main.58702a82.chunk.js",
+    "main.js.map": "/covid19-india-stats/static/js/main.58702a82.chunk.js.map",
     "runtime-main.js": "/covid19-india-stats/static/js/runtime-main.582d95d2.js",
     "runtime-main.js.map": "/covid19-india-stats/static/js/runtime-main.582d95d2.js.map",
     "static/js/2.db88b254.chunk.js": "/covid19-india-stats/static/js/2.db88b254.chunk.js",
     "static/js/2.db88b254.chunk.js.map": "/covid19-india-stats/static/js/2.db88b254.chunk.js.map",
     "index.html": "/covid19-india-stats/index.html",
-    "precache-manifest.a002a76998bc4224a547ec912d83f534.js": "/covid19-india-stats/precache-manifest.a002a76998bc4224a547ec912d83f534.js",
+    "precache-manifest.30505ee5dc9451b05b6e70497b186220.js": "/covid19-india-stats/precache-manifest.30505ee5dc9451b05b6e70497b186220.js",
     "service-worker.js": "/covid19-india-stats/service-worker.js",
-    "static/css/main.0250a2a1.chunk.css.map": "/covid19-india-stats/static/css/main.0250a2a1.chunk.css.map",
+    "static/css/main.9205ce66.chunk.css.map": "/covid19-india-stats/static/css/main.9205ce66.chunk.css.map",
     "static/js/2.db88b254.chunk.js.LICENSE.txt": "/covid19-india-stats/static/js/2.db88b254.chunk.js.LICENSE.txt",
     "static/media/logo.png": "/covid19-india-stats/static/media/logo.22f5a4e9.png"
   },
   "entrypoints": [
     "static/js/runtime-main.582d95d2.js",
     "static/js/2.db88b254.chunk.js",
-    "static/css/main.0250a2a1.chunk.css",
-    "static/js/main.67f3d648.chunk.js"
+    "static/css/main.9205ce66.chunk.css",
+    "static/js/main.58702a82.chunk.js"
   ]
 }
