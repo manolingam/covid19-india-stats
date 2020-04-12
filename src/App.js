@@ -76,7 +76,7 @@ class App extends React.Component {
 						{
 							stacked: true,
 							gridLines: {
-								display: true,
+								display: false,
 								color: 'rgba(255,99,132,0.2)',
 							},
 						},
@@ -84,7 +84,7 @@ class App extends React.Component {
 					xAxes: [
 						{
 							gridLines: {
-								display: false,
+								display: true,
 							},
 						},
 					],
@@ -127,7 +127,7 @@ class App extends React.Component {
 					xAxes: [
 						{
 							gridLines: {
-								display: false,
+								display: true,
 							},
 						},
 					],
@@ -163,7 +163,7 @@ class App extends React.Component {
 						{
 							stacked: true,
 							gridLines: {
-								display: true,
+								display: false,
 								color: 'rgba(255,99,132,0.2)',
 							},
 						},
