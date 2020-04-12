@@ -2,8 +2,6 @@ import React from 'react';
 
 import Chart from 'chart.js';
 
-import './styles.css';
-
 let labels = [];
 let cases = [];
 class District extends React.Component {
@@ -32,15 +30,36 @@ class District extends React.Component {
 					},
 				],
 			},
+			options: {
+				title: {
+					display: true,
+					text: 'Confirmed cases (TamilNadu)',
+				},
+				maintainAspectRatio: false,
+				scales: {
+					yAxes: [
+						{
+							stacked: true,
+							gridLines: {
+								display: true,
+								color: 'rgba(255,99,132,0.2)',
+							},
+						},
+					],
+					xAxes: [
+						{
+							gridLines: {
+								display: false,
+							},
+						},
+					],
+				},
+			},
 		});
 	}
 
 	render() {
-		return (
-			<div className='district-stats'>
-				<canvas id='districtBarChart'></canvas>
-			</div>
-		);
+		return <canvas id='districtBarChart'></canvas>;
 	}
 }
 

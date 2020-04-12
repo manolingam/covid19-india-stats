@@ -4,20 +4,19 @@ import Chart from 'chart.js';
 
 let labels = [];
 let cases = [];
-class State extends React.Component {
-	constructor() {
-		super();
-		this.state = {};
-	}
 
-	async componentDidMount() {
-		await this.props.stats.map((stat) => {
-			labels.push(stat.loc);
-			cases.push(stat.totalConfirmed);
+class Country extends React.Component {
+	componentDidMount() {
+		let history = this.props.stats;
+
+		history.data.map((stat) => {
+			labels.push(stat.day);
+			cases.push(stat.summary.total);
 		});
-		var ctx = document.getElementById('stateBarChart');
-		var myBarChart = new Chart(ctx, {
-			type: 'horizontalBar',
+
+		var ctx = document.getElementById('countryChart');
+		var myLineChart = new Chart(ctx, {
+			type: 'line',
 			data: {
 				labels: labels,
 				datasets: [
@@ -27,14 +26,13 @@ class State extends React.Component {
 						backgroundColor: 'rgba(255, 99, 132, 0.2)',
 						borderColor: 'rgba(255, 99, 132, 1)',
 						borderWidth: 1,
-						minBarLength: 5,
 					},
 				],
 			},
 			options: {
 				title: {
 					display: true,
-					text: 'Confirmed cases (State)',
+					text: 'Confirmed cases in India',
 				},
 				maintainAspectRatio: false,
 				scales: {
@@ -42,7 +40,7 @@ class State extends React.Component {
 						{
 							stacked: true,
 							gridLines: {
-								display: false,
+								display: true,
 								color: 'rgba(255,99,132,0.2)',
 							},
 						},
@@ -60,8 +58,8 @@ class State extends React.Component {
 	}
 
 	render() {
-		return <canvas id='stateBarChart'></canvas>;
+		return <canvas id='countryChart'></canvas>;
 	}
 }
 
-export default State;
+export default Country;
