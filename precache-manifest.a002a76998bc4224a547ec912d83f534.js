@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1aad781e1621e9f9e513f1bb705f808b",
+    "revision": "f7e1ed5427d632ad39a53ab3d282bc72",
     "url": "/covid19-india-stats/index.html"
   },
   {
-    "revision": "cefd6545267d48e35a09",
-    "url": "/covid19-india-stats/static/css/main.9a7fc402.chunk.css"
+    "revision": "40bac020ae4d1a395b78",
+    "url": "/covid19-india-stats/static/css/main.0250a2a1.chunk.css"
   },
   {
-    "revision": "2d8d2eb0d0cbf962c456",
-    "url": "/covid19-india-stats/static/js/2.73ea4151.chunk.js"
+    "revision": "d756e9ed3df5386d7c6d",
+    "url": "/covid19-india-stats/static/js/2.db88b254.chunk.js"
   },
   {
     "revision": "b4cabae32341920cfb4131dbdebda2c2",
-    "url": "/covid19-india-stats/static/js/2.73ea4151.chunk.js.LICENSE.txt"
+    "url": "/covid19-india-stats/static/js/2.db88b254.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "cefd6545267d48e35a09",
-    "url": "/covid19-india-stats/static/js/main.3cb4b2b3.chunk.js"
+    "revision": "40bac020ae4d1a395b78",
+    "url": "/covid19-india-stats/static/js/main.67f3d648.chunk.js"
   },
   {
     "revision": "065f225e0a50f20a474b",
