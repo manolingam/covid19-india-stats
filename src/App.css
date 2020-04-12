@@ -90,6 +90,14 @@ a:hover {
 	cursor: pointer;
 }
 
+#data-source {
+	position: absolute;
+	top: 0.5rem;
+	right: 3rem;
+	font-size: small;
+	font-family: 'Share Tech Mono', monospace;
+}
+
 @media only screen and (max-width: 900px) {
 	.container {
 		display: block;
@@ -100,6 +108,10 @@ a:hover {
 	#logo {
 		height: 50px;
 		width: auto;
+	}
+	#data-source {
+		right: 1rem;
+		font-size: 0.5rem;
 	}
 }
 

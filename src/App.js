@@ -249,10 +249,17 @@ class App extends React.Component {
 				<div className='container'>
 					<section id='home'>
 						<div className='corner-ribbon top-left sticky red shadow'>
-							<a className='white' href='https://ipfs.io/'>
+							<a
+								className='white'
+								href='https://manolingam.github.io/portfolio'
+								target='_blank'
+								rel='noopener noreferrer'
+							>
 								Design by Mano
 							</a>
 						</div>
+
+						<p id='data-source'>* data from Covid19India</p>
 
 						<div className='nav-container'>
 							<img
