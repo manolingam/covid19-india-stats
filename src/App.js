@@ -260,6 +260,9 @@ class App extends React.Component {
 						</div>
 
 						<p id='data-source'>* data from Covid19India</p>
+						<p id='last-updated'>
+							* {this.state.stateStats.lastRefreshed}
+						</p>
 
 						<div className='nav-container'>
 							<img
