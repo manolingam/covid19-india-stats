@@ -35,13 +35,12 @@ class App extends React.Component {
 			historyCases.push(stat.summary.total);
 		});
 
-		this.state.stateStats.data.regional.map((stat) => {
-			stateLabels.push(stat.loc);
-			stateCases.push(stat.totalConfirmed);
+		this.state.rawStats.statewise.map((stat) => {
+			stateLabels.push(stat.state);
+			stateCases.push(stat.active);
 		});
 
 		let districts = this.state.districtStats['Tamil Nadu'].districtData;
-		console.log(districts);
 
 		for (var key in districts) {
 			districtLabels.push(key);
@@ -101,8 +100,8 @@ class App extends React.Component {
 					{
 						label: 'Confirmed Cases',
 						data: stateCases,
-						backgroundColor: 'rgba(255, 99, 132, 0.2)',
-						borderColor: 'rgba(255, 99, 132, 1)',
+						backgroundColor: '#d8345f',
+						borderColor: '#d8345f',
 						borderWidth: 1,
 						minBarLength: 5,
 					},
@@ -181,9 +180,18 @@ class App extends React.Component {
 	};
 
 	async componentDidMount() {
+		let rawStats;
 		let stateStats;
 		let districtStats;
 		let historyStats;
+
+		await fetch('https://api.covid19india.org/data.json')
+			.then((res) => {
+				return res.json();
+			})
+			.then((data) => {
+				rawStats = data;
+			});
 
 		await fetch('https://api.rootnet.in/covid19-in/stats/history')
 			.then((res) => {
@@ -211,31 +219,10 @@ class App extends React.Component {
 
 		this.setState(
 			{
+				rawStats: rawStats,
 				stateStats: stateStats,
 				districtStats: districtStats,
 				historyStats: historyStats,
-				totalPrevious:
-					historyStats.data[historyStats.data.length - 2].summary
-						.total,
-				totalCurrent: stateStats.data.summary.total,
-				confirmedIndianPrevious:
-					historyStats.data[historyStats.data.length - 2].summary
-						.confirmedCasesIndian,
-				confirmedIndianCurrent:
-					stateStats.data.summary.confirmedCasesIndian,
-				confirmedForeignPrevious:
-					historyStats.data[historyStats.data.length - 2].summary
-						.confirmedCasesForeign,
-				confirmedForeignCurrent:
-					stateStats.data.summary.confirmedCasesForeign,
-				dischargedPrevious:
-					historyStats.data[historyStats.data.length - 2].summary
-						.discharged,
-				dischargedCurrent: stateStats.data.summary.discharged,
-				deathPrevious:
-					historyStats.data[historyStats.data.length - 2].summary
-						.deaths,
-				deathCurrent: stateStats.data.summary.deaths,
 			},
 			() => {
 				this.drawCharts();
@@ -273,16 +260,16 @@ class App extends React.Component {
 								id='logo'
 							></img>
 							<p id='app-title'>Covid-19 India Stats</p>
-							<Nav stats={this.state} />
+							<Nav stats={this.state.rawStats} />
 							<Pie
-								total={this.state.stateStats.data.summary.total}
+								total={
+									this.state.rawStats.statewise[0].confirmed
+								}
+								active={this.state.rawStats.statewise[0].active}
 								discharged={
-									this.state.stateStats.data.summary
-										.discharged
+									this.state.rawStats.statewise[0].recovered
 								}
-								deaths={
-									this.state.stateStats.data.summary.deaths
-								}
+								deaths={this.state.rawStats.statewise[0].deaths}
 							/>
 							<a href='#country-section'>More</a>
 						</div>

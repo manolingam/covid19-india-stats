@@ -13,15 +13,21 @@ class Pie extends React.Component {
 		var myPieChart = new Chart(ctx, {
 			type: 'pie',
 			data: {
-				labels: ['Confirmed', 'Recovered', 'Deaths'],
+				labels: ['Confirmed', 'Active', 'Recovered', 'Deaths'],
 				datasets: [
 					{
 						data: [
 							this.props.total,
+							this.props.active,
 							this.props.discharged,
 							this.props.deaths,
 						],
-						backgroundColor: ['#fe346e', '#1eb2a6', '#323232'],
+						backgroundColor: [
+							'#fe346e',
+							'mediumpurple',
+							'#1eb2a6',
+							'#323232',
+						],
 						// hoverBackgroundColor: ['#323232', '#1eb2a6', '#fe346e'],
 					},
 				],
