@@ -15,8 +15,6 @@ class Charts extends React.Component {
 		this.state = {};
 	}
 
-	async componentDidMount() {}
-
 	render() {
 		return (
 			<div>

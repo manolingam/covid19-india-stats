@@ -10,11 +10,12 @@ class State extends React.Component {
 		this.state = {};
 	}
 
-	chart = () => {
+	componentDidMount() {
 		this.props.stats.map((stat) => {
 			labels.push(stat.loc);
 			cases.push(stat.totalConfirmed);
 		});
+
 		var state_ctx = document.getElementById('stateBarChart');
 		new Chart(state_ctx, {
 			type: 'horizontalBar',
@@ -57,7 +58,7 @@ class State extends React.Component {
 				},
 			},
 		});
-	};
+	}
 
 	render() {
 		return <canvas id='stateBarChart'></canvas>;

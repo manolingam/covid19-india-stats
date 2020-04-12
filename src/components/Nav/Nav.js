@@ -6,22 +6,29 @@ import './styles.css';
 
 const Nav = (props) => {
 	const {
-		total,
 		totalCurrent,
 		totalPrevious,
-		confirmedCasesIndian,
+
 		confirmedIndianCurrent,
 		confirmedIndianPrevious,
-		confirmedCasesForeign,
+
 		confirmedForeignCurrent,
 		confirmedForeignPrevious,
-		discharged,
+
 		dischargedCurrent,
 		dischargedPrevious,
-		deaths,
+
 		deathCurrent,
 		deathPrevious,
 	} = props.stats;
+
+	let total = props.stats.stateStats.data.summary.total;
+	let confirmedCasesIndian =
+		props.stats.stateStats.data.summary.confirmedCasesIndian;
+	let confirmedCasesForeign =
+		props.stats.stateStats.data.summary.confirmedCasesForeign;
+	let discharged = props.stats.stateStats.data.summary.discharged;
+	let deaths = props.stats.stateStats.data.summary.deaths;
 
 	return (
 		<nav className='nav'>
