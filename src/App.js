@@ -5,6 +5,7 @@ import Chart from 'chart.js';
 
 import Pie from './components/Pie/Pie';
 import Nav from './components/Nav/Nav';
+import StateTable from './components/Table/StateTable';
 
 import logo from './assets/logo.png';
 
@@ -277,6 +278,9 @@ class App extends React.Component {
 						</div>
 					</section>
 					<section>
+						<StateTable stats={this.state.rawStats.statewise} />
+					</section>
+					<section>
 						<div id='country-section' className='chart-container'>
 							<canvas id='countryChart'></canvas>
 						</div>
@@ -297,7 +301,9 @@ class App extends React.Component {
 				</div>
 			</div>
 		) : (
-			<div></div>
+			<div className='spinner-container'>
+				<div className='spinner'></div>
+			</div>
 		);
 	}
 }
