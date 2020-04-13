@@ -22,7 +22,7 @@ const StyledTableCell = withStyles((theme) => ({
 		fontSize: 12,
 	},
 	body: {
-		fontSize: 10,
+		fontSize: 11,
 		fontFamily: "'Share Tech Mono', monospace",
 	},
 	padding: '10px',
@@ -71,12 +71,48 @@ const StateTable = (props) => {
 										{stat.state}
 									</StyledTableCell>
 									<StyledTableCell align='right'>
+										{stat.deltaconfirmed !== '0' ? (
+											<span
+												style={{
+													fontSize: '0.5rem',
+													color: '#fe346e',
+												}}
+											>
+												+{stat.deltaconfirmed}
+											</span>
+										) : null}
+
+										{'  '}
 										{stat.confirmed}
 									</StyledTableCell>
 									<StyledTableCell align='right'>
+										{stat.deltarecovered !== '0' ? (
+											<span
+												style={{
+													fontSize: '0.5rem',
+													color: '#1eb2a6',
+												}}
+											>
+												+{stat.deltarecovered}
+											</span>
+										) : null}
+
+										{'  '}
 										{stat.recovered}
 									</StyledTableCell>
 									<StyledTableCell align='right'>
+										{stat.deltadeaths !== '0' ? (
+											<span
+												style={{
+													fontSize: '0.5rem',
+													color: '#323232',
+												}}
+											>
+												+{stat.deltadeaths}
+											</span>
+										) : null}
+
+										{'  '}
 										{stat.deaths}
 									</StyledTableCell>
 								</StyledTableRow>

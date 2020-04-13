@@ -38,8 +38,6 @@ class App extends React.Component {
 			historyCases.push(stat.summary.total);
 		});
 
-		// let stateStatsObject = this.state.rawStats.statewise.shift();
-
 		this.state.rawStats.statewise.map((stat) => {
 			stateLabels.push(stat.state);
 			stateCases.push(stat.active);
