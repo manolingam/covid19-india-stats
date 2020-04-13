@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "da2b0e6b3b19b83afb8e9ae53d771c3d",
+    "revision": "4b1d77c16b873051351ebfc3f123fa04",
     "url": "/covid19-india-stats/index.html"
   },
   {
-    "revision": "eb60b4e2ed95b2a989ab",
-    "url": "/covid19-india-stats/static/css/main.4ed34ad7.chunk.css"
+    "revision": "8502d98c50bfca62fb27",
+    "url": "/covid19-india-stats/static/css/main.90b00878.chunk.css"
   },
   {
     "revision": "19fcc50d63012fccc5fd",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/covid19-india-stats/static/js/2.3906aa7c.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "eb60b4e2ed95b2a989ab",
+    "revision": "8502d98c50bfca62fb27",
     "url": "/covid19-india-stats/static/js/main.8e2d30ae.chunk.js"
   },
   {
