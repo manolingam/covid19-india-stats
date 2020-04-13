@@ -47,9 +47,14 @@
 	justify-content: center;
 }
 
-@media only screen and (max-width: 600px) {
-	.arrow {
-		margin-left: 0.5rem;
-		height: 10px;
-	}
+.confirmed {
+	color: #fe346e;
+}
+
+.recovered {
+	color: #1eb2a6;
+}
+
+.deaths {
+	color: #323232;
 }

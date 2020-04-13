@@ -38,7 +38,7 @@ class App extends React.Component {
 			historyCases.push(stat.summary.total);
 		});
 
-		let stateStatsObject = this.state.rawStats.statewise.shift();
+		// let stateStatsObject = this.state.rawStats.statewise.shift();
 
 		this.state.rawStats.statewise.map((stat) => {
 			stateLabels.push(stat.state);
@@ -222,9 +222,12 @@ class App extends React.Component {
 				districtStats = data;
 			});
 
+		let summaryStats = rawStats.statewise.shift();
+
 		this.setState(
 			{
 				rawStats: rawStats,
+				summaryStats: summaryStats,
 				stateStats: stateStats,
 				districtStats: districtStats,
 				historyStats: historyStats,
@@ -263,22 +266,19 @@ class App extends React.Component {
 								id='logo'
 							></img>
 							<p id='app-title'>Covid-19 India Stats</p>
-							<Nav stats={this.state.rawStats} />
+							<Nav stats={this.state.summaryStats} />
 							<Pie
-								total={
-									this.state.rawStats.statewise[0].confirmed
-								}
-								active={this.state.rawStats.statewise[0].active}
-								discharged={
-									this.state.rawStats.statewise[0].recovered
-								}
-								deaths={this.state.rawStats.statewise[0].deaths}
+								total={this.state.summaryStats.confirmed}
+								active={this.state.summaryStats.active}
+								discharged={this.state.summaryStats.recovered}
+								deaths={this.state.summaryStats.deaths}
 							/>
-							<a href='#country-section'>More</a>
+							<a href='#table-section'>More</a>
 						</div>
 					</section>
-					<section>
+					<section id='table-section'>
 						<StateTable stats={this.state.rawStats.statewise} />
+						<a href='#country-section'>More</a>
 					</section>
 					<section>
 						<div id='country-section' className='chart-container'>
