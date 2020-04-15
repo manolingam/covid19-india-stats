@@ -33,6 +33,7 @@ Chart.defaults.global.defaultFontSize = 10;
 const THEME = createMuiTheme({
 	typography: {
 		fontFamily: "'Share Tech Mono', monospace;",
+		fontSize: 12,
 	},
 });
 class App extends React.Component {
