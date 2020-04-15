@@ -19,10 +19,10 @@ const StyledTableCell = withStyles((theme) => ({
 		backgroundColor: 'white',
 		color: '#fe346e',
 		fontFamily: "'Share Tech Mono', monospace",
-		fontSize: 12,
+		fontSize: 13,
 	},
 	body: {
-		fontSize: 11,
+		fontSize: 13,
 		fontFamily: "'Share Tech Mono', monospace",
 	},
 	padding: '10px',

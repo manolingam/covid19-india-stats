@@ -3,6 +3,11 @@ import React from 'react';
 
 import Chart from 'chart.js';
 
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
 import Pie from './components/Pie/Pie';
 import Nav from './components/Nav/Nav';
 import StateTable from './components/Table/StateTable';
@@ -24,17 +29,33 @@ let districtCases = [];
 Chart.defaults.global.defaultFontColor = 'black';
 Chart.defaults.global.defaultFontFamily = "'Share Tech Mono', monospace";
 Chart.defaults.global.defaultFontSize = 10;
+
+const THEME = createMuiTheme({
+	typography: {
+		fontFamily: "'Share Tech Mono', monospace;",
+	},
+});
 class App extends React.Component {
 	constructor() {
 		super();
 		this.state = {};
 	}
 
+	formatTime = (timestamp) => {
+		var date = new Date(timestamp * 1000);
+
+		return date.toLocaleString();
+	};
+
 	drawCharts = () => {
 		history = this.state.historyStats;
 
 		history.data.map((stat) => {
-			historyLabels.push(stat.day);
+			let day = stat.day.replace('2020-', '');
+			day = day.replace('03-', 'Mar - ');
+			day = day.replace('04-', 'Apr - ');
+			day = day.replace('05-', 'May - ');
+			historyLabels.push(day);
 			historyCases.push(stat.summary.total);
 		});
 
@@ -184,9 +205,10 @@ class App extends React.Component {
 
 	async componentDidMount() {
 		let rawStats;
-		let stateStats;
+		// let stateStats;
 		let districtStats;
 		let historyStats;
+		let updates;
 
 		await fetch('https://api.covid19india.org/data.json')
 			.then((res) => {
@@ -204,13 +226,13 @@ class App extends React.Component {
 				historyStats = data;
 			});
 
-		await fetch('https://api.rootnet.in/covid19-in/stats/latest')
-			.then((res) => {
-				return res.json();
-			})
-			.then((data) => {
-				stateStats = data;
-			});
+		// await fetch('https://api.rootnet.in/covid19-in/stats/latest')
+		// 	.then((res) => {
+		// 		return res.json();
+		// 	})
+		// 	.then((data) => {
+		// 		stateStats = data;
+		// 	});
 
 		await fetch('https://api.covid19india.org/state_district_wise.json')
 			.then((res) => {
@@ -220,15 +242,24 @@ class App extends React.Component {
 				districtStats = data;
 			});
 
+		await fetch('https://api.covid19india.org/updatelog/log.json')
+			.then((res) => {
+				return res.json();
+			})
+			.then((data) => {
+				updates = data;
+			});
+
 		let summaryStats = rawStats.statewise.shift();
 
 		this.setState(
 			{
 				rawStats: rawStats,
 				summaryStats: summaryStats,
-				stateStats: stateStats,
+				// stateStats: stateStats,
 				districtStats: districtStats,
 				historyStats: historyStats,
+				updates: updates.reverse(),
 			},
 			() => {
 				this.drawCharts();
@@ -271,28 +302,61 @@ class App extends React.Component {
 								discharged={this.state.summaryStats.recovered}
 								deaths={this.state.summaryStats.deaths}
 							/>
-							<a href='#table-section'>More</a>
+							{/* <a href='#table-section'>More</a> */}
 						</div>
 					</section>
 					<section id='table-section'>
 						<StateTable stats={this.state.rawStats.statewise} />
-						<a href='#country-section'>More</a>
+						{/* <a href='#country-section'>More</a> */}
 					</section>
 					<section>
 						<div id='country-section' className='chart-container'>
 							<canvas id='countryChart'></canvas>
 						</div>
-						<a href='#state-section'>More</a>
+						{/* <a href='#state-section'>More</a> */}
 					</section>
 					<section>
 						<div id='state-section' className='chart-container'>
 							<canvas id='stateBarChart'></canvas>
 						</div>
-						<a href='#district-section'>More</a>
+						{/* <a href='#district-section'>More</a> */}
 					</section>
 					<section>
 						<div id='district-section' className='chart-container'>
 							<canvas id='districtBarChart'></canvas>
+						</div>
+					</section>
+					<section>
+						<div className='updates'>
+							<p
+								style={{
+									fontSize: '1.3rem',
+									color: 'blueviolet',
+								}}
+							>
+								Recent Updates
+							</p>
+							<ThemeProvider theme={THEME}>
+								<List>
+									{this.state.updates
+										.slice(0, 5)
+										.map((item, index) => {
+											return (
+												<ListItem key={index}>
+													<ListItemText
+														primary={item.update.replace(
+															'\n',
+															', '
+														)}
+														secondary={this.formatTime(
+															item.timestamp
+														)}
+													/>
+												</ListItem>
+											);
+										})}
+								</List>
+							</ThemeProvider>
 						</div>
 						<a href='#home'>Back to top</a>
 					</section>
