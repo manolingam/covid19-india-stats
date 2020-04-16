@@ -21,7 +21,9 @@ let historyLabels = [];
 let historyCases = [];
 
 let stateLabels = [];
-let stateCases = [];
+let stateActiveCases = [];
+let stateRecoveredCases = [];
+let stateDeaths = [];
 
 let districtLabels = [];
 let districtCases = [];
@@ -62,7 +64,9 @@ class App extends React.Component {
 
 		this.state.rawStats.statewise.map((stat) => {
 			stateLabels.push(stat.state);
-			stateCases.push(stat.active);
+			stateActiveCases.push(stat.active);
+			stateRecoveredCases.push(stat.recovered);
+			stateDeaths.push(stat.deaths);
 		});
 
 		let districts = this.state.districtStats['Tamil Nadu'].districtData;
@@ -123,12 +127,26 @@ class App extends React.Component {
 				labels: stateLabels,
 				datasets: [
 					{
-						label: 'Confirmed Cases',
-						data: stateCases,
+						label: 'Active',
+						data: stateActiveCases,
 						backgroundColor: '#d8345f',
 						borderColor: '#d8345f',
 						borderWidth: 1,
 						minBarLength: 5,
+					},
+					{
+						label: 'Recovered',
+						data: stateRecoveredCases,
+						backgroundColor: '#1eb2a6',
+						borderColor: '#1eb2a6',
+						borderWidth: 1,
+					},
+					{
+						label: 'Deaths',
+						data: stateDeaths,
+						backgroundColor: '#323232',
+						borderColor: '#323232',
+						borderWidth: 1,
 					},
 				],
 			},
@@ -150,6 +168,7 @@ class App extends React.Component {
 					],
 					xAxes: [
 						{
+							stacked: true,
 							gridLines: {
 								display: true,
 							},
